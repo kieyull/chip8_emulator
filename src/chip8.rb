@@ -10,12 +10,13 @@ module Chip8
       @cpu = CPU.new
     end
 
-    def get_memory
-      p cpu.get_memory
+    def dump_memory
+      p cpu.dump_memory
     end
 
     def run(rom)
       cpu.load_rom(rom)
+      cpu.run
     end
   end
 end

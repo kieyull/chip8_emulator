@@ -21,7 +21,7 @@ module Chip8
         data[addr] = val
       end
 
-      def get_bytecode(addr)
+      def get_data_at(addr)
         data[:addr]
       end
 

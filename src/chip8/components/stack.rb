@@ -3,7 +3,7 @@
 module Chip8
   module Components
     class Stack
-      attr_reader :data
+      attr_reader :data, :pointer
 
       STACK_SIZE = 0xC # 12
 

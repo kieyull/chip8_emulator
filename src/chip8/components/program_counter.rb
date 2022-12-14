@@ -7,10 +7,15 @@ module Chip8
 
       def initialize(starting_index)
         @index = starting_index
+        @starting_index = starting_index
       end
 
       def increment
         index += 1 if index < Memory::MEMORY_SIZE
+      end
+
+      def decrement
+        index -= 1 if index > @starting_index
       end
 
       def update_pointer(addr)

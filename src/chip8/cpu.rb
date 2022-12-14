@@ -6,10 +6,10 @@ module Chip8
   class CPU
     include Chip8::Components
 
-    attr_reader :memory, :pc
+    attr_reader :memory, :pc, :display
 
     def initialize
-      @display = nil
+      @display = Display.new
       @memory = Memory.new
       @pc = ProgramCounter.new(Memory::PROGRAM_OFFSET)
       @register = Register.new
@@ -27,7 +27,7 @@ module Chip8
       }
     end
 
-    def get_memory
+    def dump_memory
       memory.data
     end
 
@@ -40,6 +40,10 @@ module Chip8
       end
     end
 
+    def run
+      display.show
+    end
+
     def cpu_cycle
       fetch
       decode
@@ -49,7 +53,7 @@ module Chip8
     private
 
     def fetch
-      @current_opcode = memory.get_bytecode(pc.index)
+      @current_opcode = memory.get_data_at(pc.index)
       pc.increment
     end
 
